@@ -4,13 +4,11 @@ public class Elf {
 	private int mAttackPower;
 	private int mDefence;
 	private String mName;
-	private boolean mBleeding = false;
-	private boolean mSundered = false;
-	private int mBleedDmg = 2;
-	private int mBleedDur = 4;
-	private int mSunderAmt = 5;
-	private int mSunderDur = 5;
+	private int mSunderAmt = 4;
+	private int mSunderDur = 0;
+	private final int SUNDER_DURATION = 5;
 	private String mRace = "elf";
+	private boolean mIsSundered = false;
 	
 	public Elf(){
 		mName = NameGenerator.generateName(mRace);
@@ -18,15 +16,15 @@ public class Elf {
 	}
 	
 	public void RandomElf(){
-		mHealth = 1 + (int)(Math.random()*90 +150);
-		mAttackPower = 1 + (int)(Math.random()*10 +30);
-		mDefence = 1 + (int)(Math.random()*5 + 18);
+		mHealth = 1 + (int)(Math.random()*89 +1600);
+		mAttackPower = 1 + (int)(Math.random()*9 +30);
+		mDefence = 1 + (int)(Math.random()*4 + 24);
 	}
 	
 	public void Shoot(Dwarf dwarfToAttack){
 		System.out.println(mName + " Attacked " +
 				dwarfToAttack.GetName() + " with Shoot.");
-		dwarfToAttack.SetBleeding(true);
+		dwarfToAttack.RandomBleed();
 		dwarfToAttack.TakeDamage(mAttackPower);
 	}
 	
@@ -48,31 +46,32 @@ public class Elf {
 	}
 	
 	public void TakeDamage(int damage){
-		int armor = mDefence; 
+		int tempArmor = mDefence;
 		if(IsSundered()){
-			armor -= mSunderAmt;
+			tempArmor -= mSunderAmt;	
+			System.out.println("armor: " + tempArmor);
 		}
-		damage -= armor;
-		if(damage > 0){
-			mHealth -= damage;
-			System.out.println(mName + " Took " + damage + " Damage");
-		}
-	}
-	
-	public boolean IsBleeding(){
-		return mBleeding;
+		int damageTaken = damage - tempArmor;
+		mHealth -= damageTaken;
+		System.out.println(mName + " Took " + damageTaken + " Damage");
 	}
 	
 	public boolean IsSundered(){
-		return mSundered;
+		return true;
 	}
 	
-	public void SetBleeding(boolean isBleeding){
-		mBleeding = isBleeding;
+	public void SetSundered(){
+		
 	}
 	
-	public void SetSundered(boolean isSundered){
-		mSundered = isSundered;
+	public void Update(){ 
+		Sundered();
+	}
+	
+	public void Sundered(){
+		if(mSunderDur > 0){
+			mSunderDur -= 1;
+		}
 	}
 	
 	public int GetHealth(){
@@ -122,4 +121,3 @@ public class Elf {
 		mName = name;
 	}
 }
-

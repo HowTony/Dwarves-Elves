@@ -4,12 +4,11 @@ public class Dwarf {
 	private int mAttackPower;
 	private int mDefence;
 	private String mName;
-	private boolean mBleeding = false;
-	private boolean mSundered = false;
-	private int mBleedDmg = 2;
-	private int mBleedDur = 4;
-	private int mSunderDur = 5;
+//	private boolean mBleeding = false;
+	private int mBleedDmg = 5;
+	private int mBleedDur = 0;
 	private String mRace = "dwarf";
+	private final int BLEED_DURATION = 4;
 	
 	public Dwarf(){
 		mName = NameGenerator.generateName(mRace);
@@ -17,15 +16,15 @@ public class Dwarf {
 	}
 	
 	public void RandomDwarf(){
-		mHealth = 1 + (int)(Math.random()*90 +175);
-		mAttackPower = 1 + (int)(Math.random()*10 +25);
-		mDefence = 1 + (int)(Math.random()*5 + 22);
+		mHealth = 1 + (int)(Math.random()*89 +1750);
+		mAttackPower = 1 + (int)(Math.random()*9 +25);
+		mDefence = 1 + (int)(Math.random()*4 + 22);
 	}
 	
 	public void Smash(Elf elfToAttack){
-		System.out.println(mName + " Attacked " +
+	System.out.println(mName + " Attacked " +
 				elfToAttack.GetName() + " with smash.");
-		elfToAttack.SetSundered(true);
+		elfToAttack.SetSundered();
 		elfToAttack.TakeDamage(mAttackPower);
 	}
 	
@@ -48,33 +47,40 @@ public class Dwarf {
 	
 	public void TakeDamage(int damage){
 		int armor = mDefence; 
-		if(IsBleeding()){
-			mHealth -= (mBleedDur*mBleedDmg);
-			System.out.println(mName + " Took " + (mBleedDur*mBleedDmg) + " Bleed Damage");
-		}
 		damage -= armor;
 		if(damage > 0){
 			mHealth -= damage;
 			System.out.println(mName + " Took " + damage + " Damage");
 		}
 	}
+	
+	public void Update(){
+		Bleeding();
+	}
+	
+	public void RandomBleed(){
+		int bleed = 1 + (int)(Math.random()*19);
+		System.out.println("rolled bleed: " + bleed);
+		if(bleed > 13){
+			IsBleeding();
+		}
+	}
+	
+	public void IsBleeding(){
+		if( mBleedDur == 0){
+			System.out.println("BLEED SUCCESS");
+			mBleedDur = BLEED_DURATION;
+		}
+	}
+	
+	public void Bleeding(){
+		if(mBleedDur > 0){
+			mHealth -= mBleedDmg;
+			System.out.println(mName + " Took " + (mBleedDmg) + " Bleed Damage");
+			mBleedDur -= 1;
+		}
+	}
 
-	public boolean IsBleeding(){
-		return mBleeding;
-	}
-	
-	public boolean IsSundered(){
-		return mSundered;
-	}
-	
-	public void SetBleeding(boolean isBleeding){
-		mBleeding = isBleeding;
-	}
-	
-	public void SetSundered(boolean isSundered){
-		mSundered = isSundered;
-	}
-	
 	public int GetHealth(){
 		return mHealth;
 	}
@@ -122,3 +128,4 @@ public class Dwarf {
 		mName = name;
 	}
 }
+
