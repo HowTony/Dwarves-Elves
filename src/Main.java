@@ -14,12 +14,12 @@ public class Main {
 			if(userInput.equals("g")){
 				System.out.println();
 				d.Smash(e);
-				//System.out.println();
-				//e.Shoot(d);
+				System.out.println();
+				e.Shoot(d);
 				System.out.println();
 				e.PrintStats();
 				System.out.println();
-//				d.PrintStats();
+				d.PrintStats();
 				d.Update();
 				e.Update();
 				
