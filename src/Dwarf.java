@@ -1,12 +1,10 @@
-
 public class Dwarf {
 	private int mHealth;
 	private int mAttackPower;
-	private int mDefense;
-	private String mName;
-	// private boolean mBleeding = false;
+	private int mDefence;
 	private int mBleedDmg = 5;
 	private int mBleedDur = 0;
+	private String mName;
 	private String mRace = "dwarf";
 	private final int BLEED_DURATION = 4;
 
@@ -18,12 +16,12 @@ public class Dwarf {
 	public void RandomDwarf() {
 		mHealth = 1 + (int) (Math.random() * 89 + 1750);
 		mAttackPower = 1 + (int) (Math.random() * 9 + 25);
-		mDefense = 1 + (int) (Math.random() * 4 + 22);
+		mDefence = 1 + (int) (Math.random() * 4 + 22);
 	}
 
 	public void Smash(Elf elfToAttack) {
 		System.out.println(mName + " Attacked " + elfToAttack.GetName() + " with smash.");
-		elfToAttack.SetSundered();
+		elfToAttack.RandomSunder();
 		elfToAttack.TakeDamage(mAttackPower);
 	}
 
@@ -41,11 +39,11 @@ public class Dwarf {
 		System.out.println(mName + " The Dwarf's Stats are.");
 		System.out.println("Health is: " + mHealth);
 		System.out.println("Attack is: " + mAttackPower);
-		System.out.println("Defence is: " + mDefense);
+		System.out.println("Defence is: " + mDefence);
 	}
 
 	public void TakeDamage(int damage) {
-		damage -= mDefense;
+		damage -= mDefence;
 		if (damage > 0) {
 			mHealth -= damage;
 			System.out.println(mName + " Took " + damage + " Damage");
@@ -54,13 +52,16 @@ public class Dwarf {
 
 	public void Update() {
 		Bleeding();
+		System.out.println("Current Bleed timer: " + mBleedDur);
 	}
 
 	public void RandomBleed() {
-		int bleed = 1 + (int) (Math.random() * 19);
-		System.out.println("rolled bleed: " + bleed);
-		if (bleed > 13) {
-			SetBleeding();
+		if(!(IsBleeding())){
+			int bleed = 1 + (int) (Math.random() * 19);
+			System.out.println("rolled bleed: " + bleed);
+			if (bleed > 13) {
+				SetBleeding();
+			}
 		}
 	}
 
@@ -107,15 +108,15 @@ public class Dwarf {
 	}
 
 	public int GetDefence() {
-		return mDefense;
+		return mDefence;
 	}
 
 	public void SetDefence(int defence) {
-		mDefense = defence;
+		mDefence = defence;
 	}
 
 	public int AddDefence(int defence) {
-		mDefense += defence;
+		mDefence += defence;
 		return defence;
 	}
 

@@ -2,13 +2,14 @@
 public class Elf {
 	private int mHealth;
 	private int mAttackPower;
-	private int mDefense;
-	private String mName;
+	private int mDefence;
 	private int mSunderAmt = 4;
 	private int mSunderDur = 0;
-	private final int SUNDER_DURATION = 5;
+	private String mName;
 	private String mRace = "elf";
-	private boolean mIsSundered = false;
+	private final int SUNDER_DURATION = 5;
+
+
 
 	public Elf() {
 		mName = NameGenerator.generateName(mRace);
@@ -18,7 +19,7 @@ public class Elf {
 	public void RandomElf() {
 		mHealth = 1 + (int) (Math.random() * 89 + 1600);
 		mAttackPower = 1 + (int) (Math.random() * 9 + 30);
-		mDefense = 1 + (int) (Math.random() * 4 + 24);
+		mDefence = 1 + (int) (Math.random() * 4 + 24);
 	}
 
 	public void Shoot(Dwarf dwarfToAttack) {
@@ -28,7 +29,7 @@ public class Elf {
 	}
 
 	public void SongOfElves() {
-		System.out.println("Y�nillor morn� tulint� i quettar");
+		System.out.println("Ynillor morn tulint i quettar");
 		AddAttack(12);
 		AddHealth(35);
 		AddDefence(14);
@@ -41,16 +42,15 @@ public class Elf {
 		System.out.println(mName + " The Elf's Stats are.");
 		System.out.println("Health is: " + mHealth);
 		System.out.println("Attack is: " + mAttackPower);
-		System.out.println("Defence is: " + mDefense);
+		System.out.println("Defence is: " + mDefence);
 	}
 
 	public void TakeDamage(int damage) {
-		int tempArmor = mDefense;
+		int tempArmor = mDefence;
 		if (IsSundered()) {
 			tempArmor -= mSunderAmt;
 			System.out.println("armor: " + tempArmor);
 		}
-
 		int damageTaken = damage - tempArmor;
 		if(damageTaken > 0) {
 			mHealth -= damageTaken;
@@ -69,6 +69,16 @@ public class Elf {
 
 	public void Update() {
 		Sundered();
+		System.out.println("Current Sunder timer: " + mSunderDur);
+	}
+	public void RandomSunder() {
+		if(!(IsSundered())){
+			int sunder = 1 + (int) (Math.random() * 19);
+			System.out.println("rolled sunder: " + sunder);
+			if (sunder > 13) {
+				SetSundered();
+			}
+		}
 	}
 
 	public void Sundered() {
@@ -104,15 +114,15 @@ public class Elf {
 	}
 
 	public int GetDefence() {
-		return mDefense;
+		return mDefence;
 	}
 
 	public void SetDefence(int defence) {
-		mDefense = defence;
+		mDefence = defence;
 	}
 
 	public int AddDefence(int defence) {
-		mDefense += defence;
+		mDefence += defence;
 		return defence;
 	}
 
