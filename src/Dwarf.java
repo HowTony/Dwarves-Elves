@@ -1,7 +1,7 @@
 public class Dwarf {
 	private int mHealth;
 	private int mAttackPower;
-	private int mDefence;
+	private int mDefense;
 	private int mBleedDmg = 5;
 	private int mBleedDur = 0;
 	private String mName;
@@ -16,7 +16,7 @@ public class Dwarf {
 	public void RandomDwarf() {
 		mHealth = 1 + (int) (Math.random() * 89 + 1750);
 		mAttackPower = 1 + (int) (Math.random() * 9 + 25);
-		mDefence = 1 + (int) (Math.random() * 4 + 22);
+		mDefense = 1 + (int) (Math.random() * 4 + 22);
 	}
 
 	public void Smash(Elf elfToAttack) {
@@ -29,21 +29,21 @@ public class Dwarf {
 		System.out.println(mName + " Screams RAWRGGG DWARF SMAUSH!!!");
 		AddAttack(10);
 		AddHealth(50);
-		AddDefence(8);
+		Adddefense(8);
 		System.out.println("New Health Amount: " + GetHealth());
 		System.out.println("New Attack Amount: " + GetAttack());
-		System.out.println("New Defence Amount: " + GetDefence());
+		System.out.println("New defense Amount: " + Getdefense());
 	}
 
 	public void PrintStats() {
 		System.out.println(mName + " The Dwarf's Stats are.");
 		System.out.println("Health is: " + mHealth);
 		System.out.println("Attack is: " + mAttackPower);
-		System.out.println("Defence is: " + mDefence);
+		System.out.println("defense is: " + mDefense);
 	}
 
 	public void TakeDamage(int damage) {
-		damage -= mDefence;
+		damage -= mDefense;
 		if (damage > 0) {
 			mHealth -= damage;
 			System.out.println(mName + " Took " + damage + " Damage");
@@ -107,17 +107,17 @@ public class Dwarf {
 		return attack;
 	}
 
-	public int GetDefence() {
-		return mDefence;
+	public int Getdefense() {
+		return mDefense;
 	}
 
-	public void SetDefence(int defence) {
-		mDefence = defence;
+	public void Setdefense(int defense) {
+		mDefense = defense;
 	}
 
-	public int AddDefence(int defence) {
-		mDefence += defence;
-		return defence;
+	public int Adddefense(int defense) {
+		mDefense += defense;
+		return defense;
 	}
 
 	public String GetName() {

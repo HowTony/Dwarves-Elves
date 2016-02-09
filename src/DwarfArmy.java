@@ -1,53 +1,32 @@
-
 public class DwarfArmy {
-	private int mHealth;
-	private int mAttackPower;
-	private int mDefence;
-	private int mArmySize;
-	private String mName;
-	private boolean mBleed;
-	private String mDwarf = "dwarf";
-
-
-	
-
-	
-	public DwarfArmy() {
-	}
-//		mHealth = health;
-//		mAttackPower = attack;
-//		mDefence = defence;
-//		mArmySize = army;
-//		mName = name;
-//	}
-	
-	
-	
-	public static int PopulateArrayHealth(){
-		int a = 1 + (int)(Math.random()*90 + 175);
-		return a;
-		
-	}
-	public static int PopulateArrayAttack(){
-		int a = 1 + (int)(Math.random()*20 + 25);
-		return a;
-		
-	}
-	public static int PopulateArrayDefence(){
-		int a = 1 + (int)(Math.random()*10 + 20);
-		return a;
-		
-	}
-	
+    
+    private static final int MAX_DWARVES = 5;
+    private Dwarf mDwarves[];
+    private int mNumDwarves;
+    
+    public DwarfArmy(int numDwarves) {
+        if(numDwarves > MAX_DWARVES) {
+            numDwarves = MAX_DWARVES;
+        }
+        
+        mNumDwarves = numDwarves;
+        
+        // allocate array
+        mDwarves = new Dwarf[numDwarves];
+        
+        // initialize each member of the array
+        for(int i = 0; i < numDwarves; i++) {
+            mDwarves[i] = new Dwarf(); // initialize each individual element of the array here
+        }
+    }
+    public void PrintStrings() {
+        for(int i = 0; i < mNumDwarves; i++) {
+            System.out.println(mDwarves[i]);
+        }
+    }
+    public void PrintArmyStats(){
+    	for(int i = 0; i < mNumDwarves; i++){
+    		mDwarves[i].PrintStats();
+    	}
+    }
 }
-
-
-
-//public static int[][] mDwarfArmy = {
-//{PopulateArrayHealth(), PopulateArrayAttack(), PopulateArrayDefence()},
-//{PopulateArrayHealth(), PopulateArrayAttack(), PopulateArrayDefence()},
-//{PopulateArrayHealth(), PopulateArrayAttack(), PopulateArrayDefence()},
-//{PopulateArrayHealth(), PopulateArrayAttack(), PopulateArrayDefence()},
-//{PopulateArrayHealth(), PopulateArrayAttack(), PopulateArrayDefence()},
-//};
-

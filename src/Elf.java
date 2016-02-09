@@ -2,14 +2,12 @@
 public class Elf {
 	private int mHealth;
 	private int mAttackPower;
-	private int mDefence;
+	private int mDefense;
 	private int mSunderAmt = 4;
 	private int mSunderDur = 0;
 	private String mName;
 	private String mRace = "elf";
 	private final int SUNDER_DURATION = 5;
-
-
 
 	public Elf() {
 		mName = NameGenerator.generateName(mRace);
@@ -19,7 +17,7 @@ public class Elf {
 	public void RandomElf() {
 		mHealth = 1 + (int) (Math.random() * 89 + 1600);
 		mAttackPower = 1 + (int) (Math.random() * 9 + 30);
-		mDefence = 1 + (int) (Math.random() * 4 + 24);
+		mDefense = 1 + (int) (Math.random() * 4 + 24);
 	}
 
 	public void Shoot(Dwarf dwarfToAttack) {
@@ -32,21 +30,21 @@ public class Elf {
 		System.out.println("Ynillor morn tulint i quettar");
 		AddAttack(12);
 		AddHealth(35);
-		AddDefence(14);
+		Adddefense(14);
 		System.out.println("New Health Amount: " + GetHealth());
 		System.out.println("New Attack Amount: " + GetAttack());
-		System.out.println("New Defence Amount: " + GetDefence());
+		System.out.println("New defense Amount: " + Getdefense());
 	}
 
 	public void PrintStats() {
 		System.out.println(mName + " The Elf's Stats are.");
 		System.out.println("Health is: " + mHealth);
 		System.out.println("Attack is: " + mAttackPower);
-		System.out.println("Defence is: " + mDefence);
+		System.out.println("defense is: " + mDefense);
 	}
 
 	public void TakeDamage(int damage) {
-		int tempArmor = mDefence;
+		int tempArmor = mDefense;
 		if (IsSundered()) {
 			tempArmor -= mSunderAmt;
 			System.out.println("armor: " + tempArmor);
@@ -82,7 +80,7 @@ public class Elf {
 	}
 
 	public void Sundered() {
-		if (mSunderDur > 0) {
+		if (IsSundered()) {
 			mSunderDur -= 1;
 		}
 	}
@@ -113,17 +111,17 @@ public class Elf {
 		return attack;
 	}
 
-	public int GetDefence() {
-		return mDefence;
+	public int Getdefense() {
+		return mDefense;
 	}
 
-	public void SetDefence(int defence) {
-		mDefence = defence;
+	public void Setdefense(int defense) {
+		mDefense = defense;
 	}
 
-	public int AddDefence(int defence) {
-		mDefence += defence;
-		return defence;
+	public int Adddefense(int defense) {
+		mDefense += defense;
+		return defense;
 	}
 
 	public String GetName() {
