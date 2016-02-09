@@ -1,3 +1,4 @@
+// Dwarf class Author:mbradberry
 public class Dwarf {
 	private int mHealth;
 	private int mAttackPower;
