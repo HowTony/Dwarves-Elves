@@ -29,4 +29,16 @@ public class DwarfArmy {
     		mDwarves[i].PrintStats();
     	}
     }
+    
+   public void TakeDamage(int damage){
+	   int damageEach = damage / mNumDwarves;
+	   for(int i = 0; i < mNumDwarves; i++){
+		   mDwarves[i].TakeDamage(damageEach);
+	   }
+	   
+   }
+    
+    
 }
+
+

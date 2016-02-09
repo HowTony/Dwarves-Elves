@@ -2,14 +2,14 @@ public class ElfArmy {
     
     private static final int MAX_ELVES = 5;
     private Elf mElves[];
-    private int mnumElves;
+    private int mNumElves;
     
     public ElfArmy(int numElves) {
         if(numElves > MAX_ELVES) {
             numElves = MAX_ELVES;
         }
         
-        mnumElves = numElves;
+        mNumElves = numElves;
         
         // allocate array
         mElves = new Elf[numElves];
@@ -20,13 +20,21 @@ public class ElfArmy {
         }
     }
     public void PrintStrings() {
-        for(int i = 0; i < mnumElves; i++) {
+        for(int i = 0; i < mNumElves; i++) {
             System.out.println(mElves[i]);
         }
     }
     public void PrintArmyStats(){
-    	for(int i = 0; i < mnumElves; i++){
+    	for(int i = 0; i < mNumElves; i++){
     		mElves[i].PrintStats();
     	}
+    }
+    
+    public void TakeDamage(int damage){
+ 	   int damageEach = damage / mNumElves;
+ 	   for(int i = 0; i < mNumElves; i++){
+ 		   mElves[i].TakeDamage(damageEach);
+ 	   }
+ 	   
     }
 }
