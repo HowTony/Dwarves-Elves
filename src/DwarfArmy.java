@@ -19,11 +19,7 @@ public class DwarfArmy {
             mDwarves[i] = new Dwarf(); // initialize each individual element of the array here
         }
     }
-    public void PrintStrings() {
-        for(int i = 0; i < mNumDwarves; i++) {
-            System.out.println(mDwarves[i]);
-        }
-    }
+    
     public void PrintArmyStats(){
     	for(int i = 0; i < mNumDwarves; i++){
     		mDwarves[i].GetStats();

@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class NameGenerator {
-	
+
 	private final static String DWARF_TAG = "Dwarf";
 	private final static String ELF_TAG = "Elf";
 
@@ -27,16 +27,14 @@ public class NameGenerator {
 	private static Random rand = new Random();
 
 	public static String generateName(String race) {
-		if(race.equals(DWARF_TAG)){
-			return DWARF_START_NAME[rand.nextInt(DWARF_START_NAME.length)] + 
-		 			DWARF_END_NAME[rand.nextInt(DWARF_END_NAME.length)];
-		}
-		else if(race.equals(ELF_TAG)){
-			return ELF_START_NAME[rand.nextInt(ELF_START_NAME.length)] + 
-					ELF_END_NAME[rand.nextInt(ELF_END_NAME.length)];
-		}
-		else
-			 return "GOD";
-		}
-	
+		if (race.equals(DWARF_TAG)) {
+			return DWARF_START_NAME[rand.nextInt(DWARF_START_NAME.length)]
+					+ DWARF_END_NAME[rand.nextInt(DWARF_END_NAME.length)];
+		} else if (race.equals(ELF_TAG)) {
+			return ELF_START_NAME[rand.nextInt(ELF_START_NAME.length)]
+					+ ELF_END_NAME[rand.nextInt(ELF_END_NAME.length)];
+		} else
+			return "GOD";
+	}
+
 }

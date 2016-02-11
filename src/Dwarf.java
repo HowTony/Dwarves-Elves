@@ -1,11 +1,11 @@
-// Dwarf class Author:Tony
-public class Dwarf extends Unit{
-	private String mRace = "Dwarf";
+public class Dwarf extends Unit {
 	
+
 	public Dwarf() {
-		RandomUnit(mRace);
+		mRace = "Dwarf";
+		RandomUnit();
 	}
-	
+
 	public void Smash(Elf elfToAttack) {
 		System.out.println(GetName() + " Attacked " + elfToAttack.GetName() + " with smash.");
 		elfToAttack.RandomSunder();
@@ -19,15 +19,8 @@ public class Dwarf extends Unit{
 		Adddefense(8);
 		GetStats();
 	}
-	
-	public void GetStats(){
+
+	public void GetStats() {
 		PrintStats(mRace);
 	}
-
-	
-
-	
-
-
-	
 }

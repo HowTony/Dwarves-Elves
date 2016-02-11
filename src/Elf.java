@@ -1,9 +1,8 @@
+public class Elf extends Unit {
 
-public class Elf extends Unit{
-	private String mRace = "Elf";
-	
 	public Elf() {
-		RandomUnit(mRace);	
+		mRace = "Elf";
+		RandomUnit();
 	}
 
 	public void Shoot(Dwarf dwarfToAttack) {
@@ -19,9 +18,8 @@ public class Elf extends Unit{
 		Adddefense(14);
 		GetStats();
 	}
-	
-	public void GetStats(){
+
+	public void GetStats() {
 		PrintStats(mRace);
 	}
-	
 }

@@ -1,49 +1,45 @@
-
 public class Unit {
-	private int mHealth;
-	private int mAttackPower;
-	private int mDefense;
-	private int mBleedDmg = 5;
-	private int mBleedDur = 0;
-	private int mSunderAmt = 4;
-	private int mSunderDur = 0;
-	private final int BLEED_DURATION = 4;
-	private final int SUNDER_DURATION = 5;
-	private String mName;
+	protected int mHealth;
+	protected int mAttackPower;
+	protected int mDefense;
+	protected int mBleedDmg = 5;
+	protected int mBleedDur = 0;
+	protected int mSunderAmt = 4;
+	protected int mSunderDur = 0;
+	protected final int BLEED_DURATION = 4;
+	protected final int SUNDER_DURATION = 5;
+	protected String mName;
+	protected String mRace;
 
-	public Unit(){
-	}
-	
 	public void Update() {
 		Bleeding();
 		System.out.println(mName + " Current Bleed timer: " + mBleedDur);
 		Sundered();
 		System.out.println(mName + " Current Sunder timer: " + mSunderDur);
 	}
-	
-	public void RandomUnit(String race) {
-		mName = NameGenerator.generateName(race);
+
+	public void RandomUnit() {
+		mName = NameGenerator.generateName(mRace);
 		mHealth = 1 + (int) (Math.random() * 49 + 1750);
 		mAttackPower = 1 + (int) (Math.random() * 4 + 25);
 		mDefense = 1 + (int) (Math.random() * 4 + 20);
 	}
-	
+
 	public void TakeDamage(int damage) {
 		int tempArmor = mDefense;
 		if (IsSundered()) {
 			tempArmor -= mSunderAmt;
 			System.out.println("armor: " + tempArmor);
 		}
-		
 		int damageTaken = damage - tempArmor;
 		if (damageTaken > 0) {
 			mHealth -= damageTaken;
 			System.out.println(GetName() + " Took " + damageTaken + " Damage");
 		}
 	}
-	
+
 	public void RandomBleed() {
-		if(!(IsBleeding())){
+		if (!(IsBleeding())) {
 			int bleed = 1 + (int) (Math.random() * 19);
 			System.out.println("rolled bleed: " + bleed);
 			if (bleed > 13) {
@@ -52,9 +48,9 @@ public class Unit {
 			}
 		}
 	}
-	
+
 	public void RandomSunder() {
-		if(!(IsSundered())){
+		if (!(IsSundered())) {
 			int sunder = 1 + (int) (Math.random() * 19);
 			System.out.println("rolled sunder: " + sunder);
 			if (sunder > 13) {
@@ -63,17 +59,18 @@ public class Unit {
 			}
 		}
 	}
-	
+
 	public void PrintStats(String race) {
 		System.out.println(mName + " The " + race + "'s Stats are.");
 		System.out.println("Health is: " + mHealth);
 		System.out.println("Attack is: " + mAttackPower);
 		System.out.println("defense is: " + mDefense);
 	}
-		
+
 	public int GetHealth() {
 		return mHealth;
 	}
+
 	public void SetBleeding() {
 		mBleedDur = BLEED_DURATION;
 	}
@@ -89,12 +86,13 @@ public class Unit {
 			mBleedDur -= 1;
 		}
 	}
-	
+
 	public void Sundered() {
 		if (IsSundered()) {
 			mSunderDur -= 1;
 		}
 	}
+
 	public boolean IsSundered() {
 		return mSunderDur > 0;
 	}
@@ -102,7 +100,6 @@ public class Unit {
 	public void SetSundered() {
 		mSunderDur = SUNDER_DURATION;
 	}
-
 
 	public void SetHealth(int health) {
 		mHealth = health;
