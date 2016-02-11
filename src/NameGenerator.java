@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class NameGenerator {
 	
-	private final static String DWARF_TAG = "dwarf";
-	private final static String ELF_TAG = "elf";
+	private final static String DWARF_TAG = "Dwarf";
+	private final static String ELF_TAG = "Elf";
 
 	private final static String[] DWARF_START_NAME = { "Bil", "Bal", "Gil", "Ga", "Gall",
 	         "Fal", "Brell", "Gim", "Klo", "Far", "Nor", "Durr", "Gim", "Dor",

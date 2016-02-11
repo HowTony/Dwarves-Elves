@@ -14,24 +14,17 @@ public class Main {
 			String userInput = key.next();
 				
 			if(userInput.equals("g")){
+				System.out.println();
+				d.Smash(e);
+				System.out.println();
+				e.Shoot(d);
+				System.out.println();
+				e.GetStats();
 //				System.out.println();
-//				d.Smash(e);
-//				System.out.println();
-//				e.Shoot(d);
-//				System.out.println();
-//				e.PrintStats();
-//				System.out.println();
-//				d.PrintStats();
-//				d.Update();
-//				e.Update();
-				da.PrintArmyStats();
-				System.out.println("-------------");
-				da.PrintArmyStats();
-				System.out.println("-------------");
-				System.out.println("--------------------------------------");
-				ea.PrintArmyStats();
-				System.out.println("---------------");
-				ea.PrintArmyStats();
+				d.GetStats();
+				d.Update();
+				e.Update();
+
 				
 				
 				

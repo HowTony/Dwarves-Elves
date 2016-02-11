@@ -26,7 +26,7 @@ public class ElfArmy {
     }
     public void PrintArmyStats(){
     	for(int i = 0; i < mNumElves; i++){
-    		mElves[i].PrintStats();
+    		mElves[i].GetStats();
     	}
     }
     

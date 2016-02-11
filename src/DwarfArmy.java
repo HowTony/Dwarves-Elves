@@ -26,7 +26,7 @@ public class DwarfArmy {
     }
     public void PrintArmyStats(){
     	for(int i = 0; i < mNumDwarves; i++){
-    		mDwarves[i].PrintStats();
+    		mDwarves[i].GetStats();
     	}
     }
     
