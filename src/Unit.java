@@ -60,8 +60,8 @@ public class Unit {
 		}
 	}
 
-	public void PrintStats(String race) {
-		System.out.println(mName + " The " + race + "'s Stats are.");
+	public void PrintStats() {
+		System.out.println(mName + " The " + mRace + "'s Stats are.");
 		System.out.println("Health is: " + mHealth);
 		System.out.println("Attack is: " + mAttackPower);
 		System.out.println("defense is: " + mDefense);

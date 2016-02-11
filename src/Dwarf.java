@@ -17,10 +17,6 @@ public class Dwarf extends Unit {
 		AddAttack(10);
 		AddHealth(50);
 		Adddefense(8);
-		GetStats();
-	}
-
-	public void GetStats() {
-		PrintStats(mRace);
+		PrintStats();;
 	}
 }

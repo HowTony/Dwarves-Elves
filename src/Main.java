@@ -20,9 +20,12 @@ public class Main {
 				System.out.println();
 				e.Shoot(d);
 				System.out.println();
-				e.GetStats();
+				e.PrintStats();
 				System.out.println();
-				d.GetStats();
+				d.PrintStats();
+				e.SongOfElves();
+				d.BattleCry();
+				
 				d.Update();
 				e.Update();
 
