@@ -16,6 +16,6 @@ public class Elf extends Unit {
 		AddAttack(12);
 		AddHealth(35);
 		Adddefense(14);
-		super.PrintStats();
+		PrintStats();
 	}
 }
