@@ -23,7 +23,6 @@ public class Main {
 				System.out.println("-----------------------------");
 				ea.PrintArmyStats();
 
-
 			}
 			if (d.GetHealth() <= 0 || e.GetHealth() <= 0) {
 				System.out.println("BATTLE OVER");
@@ -40,29 +39,5 @@ public class Main {
 		System.out.println("GOOD BYE!");
 
 	}
-	
-	/*ANYWAY
 
-[1:47] 
-now that you have that done
-
-[1:47] 
-in ElfArmy.AttackArmy(DwarfArmy)
-
-[1:48] 
-now you can loop over all your elves
-
-[1:48] 
-and for each elf
-
-[1:48] 
-choose a random dwarf to attack
-
-[1:48] 
-attack that Dwarf (shoot) and that’s it(edited)
-
-	 */
-	
 }
-
-
