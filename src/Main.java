@@ -15,19 +15,14 @@ public class Main {
 			String userInput = key.next();
 
 			if (userInput.equals("g")) {
-				System.out.println();
-				d.Smash(e);
-				System.out.println();
-				e.Shoot(d);
-				System.out.println();
-				e.PrintStats();
-				System.out.println();
-				d.PrintStats();
-				e.SongOfElves();
-				d.BattleCry();
-				
-				d.Update();
-				e.Update();
+				ea.ElfArmyAttack(da);
+				da.DwarfArmyAttack(ea);
+				System.out.println("-----------------------------");
+				da.PrintArmyStats();
+				System.out.println("-----------------------------");
+				System.out.println("-----------------------------");
+				ea.PrintArmyStats();
+
 
 			}
 			if (d.GetHealth() <= 0 || e.GetHealth() <= 0) {
@@ -45,4 +40,29 @@ public class Main {
 		System.out.println("GOOD BYE!");
 
 	}
+	
+	/*ANYWAY
+
+[1:47] 
+now that you have that done
+
+[1:47] 
+in ElfArmy.AttackArmy(DwarfArmy)
+
+[1:48] 
+now you can loop over all your elves
+
+[1:48] 
+and for each elf
+
+[1:48] 
+choose a random dwarf to attack
+
+[1:48] 
+attack that Dwarf (shoot) and that’s it(edited)
+
+	 */
+	
 }
+
+

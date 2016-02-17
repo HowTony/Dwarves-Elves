@@ -20,9 +20,9 @@ public class Unit {
 
 	public void RandomUnit() {
 		mName = NameGenerator.generateName(mRace);
-		mHealth = 1 + (int) (Math.random() * 49 + 1750);
-		mAttackPower = 1 + (int) (Math.random() * 4 + 25);
-		mDefense = 1 + (int) (Math.random() * 4 + 20);
+		mHealth = 1 + (int) (Math.random() * 50 + 1750);
+		mAttackPower = 1 + (int) (Math.random() * 5 + 25);
+		mDefense = 1 + (int) (Math.random() * 5 + 20);
 	}
 
 	public void TakeDamage(int damage) {
@@ -40,7 +40,7 @@ public class Unit {
 
 	public void RandomBleed() {
 		if (!(IsBleeding())) {
-			int bleed = 1 + (int) (Math.random() * 19);
+			int bleed = 1 + (int) (Math.random() * 20);
 			System.out.println("rolled bleed: " + bleed);
 			if (bleed > 13) {
 				SetBleeding();
@@ -67,9 +67,7 @@ public class Unit {
 		System.out.println("defense is: " + mDefense);
 	}
 
-	public int GetHealth() {
-		return mHealth;
-	}
+	
 
 	public void SetBleeding() {
 		mBleedDur = BLEED_DURATION;
@@ -96,11 +94,19 @@ public class Unit {
 	public boolean IsSundered() {
 		return mSunderDur > 0;
 	}
-
+	
+	public boolean IsAlive() {
+		return mHealth > 0;
+	}
+	
 	public void SetSundered() {
 		mSunderDur = SUNDER_DURATION;
 	}
-
+	
+	public int GetHealth() {
+		return mHealth;
+	}
+	
 	public void SetHealth(int health) {
 		mHealth = health;
 	}
