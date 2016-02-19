@@ -1,18 +1,15 @@
 import java.util.ArrayList;
 
-public class DwarfArmy {
+public class DwarfArmy extends UnitArmy {
 
 	private static final int MAX_DWARVES = 5;
 	private ArrayList<Dwarf> mDwarves;
 	private int mNumDwarves;
 
 	public DwarfArmy(int numDwarves) {
-
 		// allocate array
 		mDwarves = new ArrayList<Dwarf>(MAX_DWARVES);
-
 		mNumDwarves = numDwarves;
-
 		// initialize each member of the array
 		for (int i = 0; i < numDwarves; i++) {
 			Dwarf newDwarf = new Dwarf();
@@ -22,19 +19,27 @@ public class DwarfArmy {
 
 	Dwarf ChooseLivingDwarf() {
 		Dwarf chosen = null;
-
+		IsDwarfUnitDead();
 		while (chosen == null && mDwarves.size() > 0) {
 			int dwarfIdx = (int) (Math.random() * (mDwarves.size()));
+			chosen = mDwarves.get(dwarfIdx);
+			mDwarves.get(dwarfIdx).PrintStats();
+		}
+		return chosen;
+	}
 
-			if (mDwarves.get(dwarfIdx).IsAlive()) {
-				chosen = mDwarves.get(dwarfIdx);
-				mDwarves.get(dwarfIdx).PrintStats();
-			} else {
+	public void DwarfArmyUpdate() {
+		for (int dwarfIdx = 0; dwarfIdx < mDwarves.size(); dwarfIdx++) {
+			mDwarves.get(dwarfIdx).Update();
+		}
+	}
+
+	public void IsDwarfUnitDead() {
+		for (int dwarfIdx = 0; dwarfIdx < mDwarves.size(); dwarfIdx++) {
+			if (!(mDwarves.get(dwarfIdx).IsAlive())) {
 				mDwarves.remove(dwarfIdx);
 			}
 		}
-
-		return chosen;
 	}
 
 	public void DwarfArmyAttack(ElfArmy elfToAttack) {
@@ -53,7 +58,7 @@ public class DwarfArmy {
 		}
 	}
 
-	public void TakeDamage(int damage) {
+	public void TakeAreaDamage(int damage) {
 		int damageEach = damage / mNumDwarves;
 		for (int i = 0; i < mNumDwarves; i++) {
 			mDwarves.get(i).TakeDamage(damageEach);

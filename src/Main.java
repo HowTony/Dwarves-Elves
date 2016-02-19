@@ -6,6 +6,7 @@ public class Main {
 		Dwarf d = new Dwarf();
 		Elf e = new Elf();
 		boolean battle = true;
+		@SuppressWarnings("resource")
 		Scanner key = new Scanner(System.in);
 		DwarfArmy da = new DwarfArmy(5);
 		ElfArmy ea = new ElfArmy(5);
@@ -15,6 +16,26 @@ public class Main {
 			String userInput = key.next();
 
 			if (userInput.equals("g")) {
+//				System.out.println();
+//				d.Smash(e);
+//				System.out.println();
+//				e.Shoot(d);
+//				System.out.println();
+//				d.PrintStats();
+//				System.out.println();
+//				e.PrintStats();
+//				System.out.println();
+//				d.Attack(e);
+//				System.out.println();
+//				e.Attack(d);
+//				System.out.println();
+//				d.PrintStats();
+//				System.out.println();
+//				e.PrintStats();
+//				System.out.println();
+//				d.Update();
+//				e.Update();
+				
 				ea.ElfArmyAttack(da);
 				da.DwarfArmyAttack(ea);
 				System.out.println("-----------------------------");
@@ -22,6 +43,8 @@ public class Main {
 				System.out.println("-----------------------------");
 				System.out.println("-----------------------------");
 				ea.PrintArmyStats();
+				ea.ElfArmyUpdate();
+				da.DwarfArmyUpdate();
 
 			}
 			if (d.GetHealth() <= 0 || e.GetHealth() <= 0) {
