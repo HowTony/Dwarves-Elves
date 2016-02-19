@@ -6,20 +6,15 @@ abstract public class UnitArmy {
 	protected ArrayList<Unit> mUnits;
 	protected int mNumUnits;
 
-	// public UnitArmy(int numUnits){
-	//
-	// // allocate array
-	// mUnits = new ArrayList<Unit>(MAX_UNITS);
-	//
-	// mNumUnits = numUnits;
-	//
-	// // initialize each member of the array
-	// for (int i = 0; i < mNumUnits; i++) {
-	// Unit newUnit = new Unit();
-	// mUnits.add(newUnit);
-	// }
-	//
-	// }
+	public UnitArmy(int numUnits, int maxUnits){
+		if(numUnits > maxUnits) {
+			numUnits = maxUnits;
+		}
+
+		// allocate array
+		mUnits = new ArrayList<Unit>(MAX_UNITS);
+		mNumUnits = numUnits;
+	}
 
 	Unit ChooseLivingUnit() {
 		Unit chosen = null;
@@ -41,7 +36,7 @@ abstract public class UnitArmy {
 		}
 	}
 
-	public void IsArmyUnitAlive() {
+	public void PurgeTheDead() {
 		for (int UnitIdx = 0; UnitIdx < mUnits.size(); UnitIdx++) {
 			if (!(mUnits.get(UnitIdx).IsAlive())) {
 				mUnits.remove(UnitIdx);
@@ -49,15 +44,14 @@ abstract public class UnitArmy {
 		}
 	}
 
-	// public void UnitArmyAttack(UnitArmy unitToAttack) {
-	// for (int unitIdx = 0; unitIdx < mUnits.size(); unitIdx++) {
-	// Unit unitAttacking = mUnits.get(unitIdx);
-	// Unit unitDefending = unitToAttack.ChooseLivingUnit();
-	// unitDefending.TakeDamage(unitAttacking.GetAttack());
-	// System.out.println(unitAttacking.GetName() + " Attacked " +
-	// unitDefending.GetName() + " with Attack.");
-	// }
-	// }
+	public void UnitArmyAttack(UnitArmy unitToAttack) {
+		for (int unitIdx = 0; unitIdx < mUnits.size(); unitIdx++) {
+			Unit unitAttacking = mUnits.get(unitIdx);
+			Unit unitDefending = unitToAttack.ChooseLivingUnit();
+			unitDefending.TakeDamage(unitAttacking.GetAttack());
+			System.out.println(unitAttacking.GetName() + " Attacked " + unitDefending.GetName() + " with Attack.");
+		}
+	}
 
 	public void PrintArmyStats() {
 		for (int i = 0; i < mUnits.size(); ++i) {

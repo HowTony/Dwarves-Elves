@@ -36,15 +36,15 @@ public class Main {
 //				d.Update();
 //				e.Update();
 				
-				ea.ElfArmyAttack(da);
-				da.DwarfArmyAttack(ea);
+				ea.UnitArmyAttack(da);
+				da.UnitArmyAttack(ea);
 				System.out.println("-----------------------------");
 				da.PrintArmyStats();
 				System.out.println("-----------------------------");
 				System.out.println("-----------------------------");
 				ea.PrintArmyStats();
-				ea.ElfArmyUpdate();
-				da.DwarfArmyUpdate();
+				ea.ArmyUpdate();
+				da.ArmyUpdate();
 
 			}
 			if (d.GetHealth() <= 0 || e.GetHealth() <= 0) {
